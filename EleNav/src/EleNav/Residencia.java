@@ -2,13 +2,18 @@ package EleNav;
 
 public class Residencia {
     private String endereco;
+    private double tamanhoTelhado;
     private double tamanho;
     private double consumo;
     
-    public Residencia(String endereco, double consumo, double tamanho) {
+    public Residencia(String endereco, double consumo, double tamanhoTelhado) {
         this.endereco = endereco;
         this.consumo = consumo;
-        this.tamanho = tamanho;
+        this.tamanhoTelhado = tamanhoTelhado;
+    }
+    
+    public double getTamanhoTelhado() {
+        return tamanhoTelhado;
     }
 
     public String getEndereco() {
