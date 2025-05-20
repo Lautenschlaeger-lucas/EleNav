@@ -45,8 +45,9 @@ public class PainelComando {
 
                     if (loginManager.verificarLogin(user, password)) {
                         usuarioLogado = true;
+                        return true;
                     } else {
-                        break;
+                        return false;
                     }
 
                     while (usuarioLogado) {
