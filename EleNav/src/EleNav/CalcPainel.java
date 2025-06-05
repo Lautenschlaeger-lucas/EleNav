@@ -18,6 +18,7 @@ public class CalcPainel {
         double custoTotal = quantidadePaineis * painelSolar.getPreco();
         double economiaMensal = residencia.getConsumo() * TARIFA_ENERGIA;
         double tempoRetorno = custoTotal / economiaMensal;
+        
 
         int meses = (int) tempoRetorno;
         double diasFracao = tempoRetorno % 1;

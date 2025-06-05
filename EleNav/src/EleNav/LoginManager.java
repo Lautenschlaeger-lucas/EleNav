@@ -9,7 +9,7 @@ public class LoginManager {
     public void cadastrarLogin(String user, String password) {
         UsuarioLogin novoLogin = new UsuarioLogin(user, password);
         listaLogin.add(novoLogin);
-        System.out.println("Usuário cadastrado com sucesso!");
+        System.out.println("Login cadastrado com sucesso!");
     }
 
     public boolean verificarLogin(String user, String password) {

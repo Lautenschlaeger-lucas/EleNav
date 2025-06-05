@@ -3,23 +3,32 @@ package EleNav;
 import java.time.LocalDate;
 
 public class Instalacao {
-    private int idInstalacao;
-    private PainelSolar painelInstalado;
-    private Residencia residencia;
-    private LocalDate dataSolicitacao;
-    private String status; // Ex: "Solicitado", "Aguardando Agendamento", "Agendado", "Concluído"
+    private final int idInstalacao;
+    private final PainelSolar painelInstalado;
+    private final Residencia residencia;
+    private final LocalDate dataSolicitacao;
+    private Tecnico tecnicoResponsavel;
+    private StatusInstalacao status; // Usando Enum
 
     public Instalacao(int idInstalacao, PainelSolar painelInstalado, Residencia residencia) {
         this.idInstalacao = idInstalacao;
         this.painelInstalado = painelInstalado;
         this.residencia = residencia;
         this.dataSolicitacao = LocalDate.now();
-        this.status = "Solicitado";
+        this.status = StatusInstalacao.SOLICITADO;
     }
 
-    // Getters e setters
+    // Getters
     public int getIdInstalacao() {
         return idInstalacao;
+    }
+    
+    public Tecnico getTecnicoResponsavel() {
+        return tecnicoResponsavel;
+    }
+
+    public void setTecnicoResponsavel(Tecnico tecnicoResponsavel) { 
+        this.tecnicoResponsavel = tecnicoResponsavel;
     }
 
     public PainelSolar getPainelInstalado() {
@@ -34,19 +43,25 @@ public class Instalacao {
         return dataSolicitacao;
     }
 
-    public String getStatus() {
+    public StatusInstalacao getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    // Método para atualizar status com validação
+    public void atualizarStatus(StatusInstalacao novoStatus) {
+        if (novoStatus != null) {
+            this.status = novoStatus;
+            System.out.println("Status atualizado para: " + status);
+        } else {
+            System.out.println("Erro: Status inválido!");
+        }
     }
 
     @Override
     public String toString() {
         return "Instalação ID: " + idInstalacao +
-               ", Painel: " + (painelInstalado != null ? painelInstalado.getNomePainel() : "N/A") +
-               ", Residência: " + (residencia != null ? residencia.getEndereco() : "N/A") +
+               ", Painel: " + painelInstalado.getNomePainel() +
+               ", Residência: " + residencia.getEndereco() +
                ", Data Solicitação: " + dataSolicitacao +
                ", Status: " + status;
     }
